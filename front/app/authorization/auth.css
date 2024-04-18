@@ -1,0 +1,52 @@
+.auth-head, .log-label, .log-input, .confirm-auth-button{
+    font-family: var(--font-mono);
+    font-size: x-large;
+}
+
+.auth{
+    width: 30%;
+    height: 100%;
+    max-height: 500px;
+    min-width: 350px;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.auth-head{
+    font-size: 300%;
+    font-weight: bolder;
+    padding: 0 0 50px 0;
+}
+
+.log-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 300px;
+}
+
+.log-input{
+    height: 30px;
+    width: 300px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    padding-left: 2px;
+}
+
+.confirm-auth-button{
+    width: 120px;
+    height: 30px;
+    margin-top: 35px;
+    background-color: rgba(1, 65, 255, 0);
+    border-radius: 7px;
+    font-size: medium;
+}
+
+.confirm-auth-button:hover{
+    background-color: rgb(70, 70, 70);
+}

@@ -1,0 +1,58 @@
+.mainpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.payslip{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
+    margin-top: 5vh;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#report{
+    width: 100%;
+    margin-bottom: 5%;      
+}
+
+.payslip-field, .payslip-h{
+    color: black;
+}
+
+.report-wrapper{
+    background-color: bisque;
+    width: 30vw;
+    min-width: 350px;
+    height: 50vh;
+}
+
+.month-options{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5% 5% 0px;
+}
+
+.select-month{
+    width: 150px;
+    height: 40px;
+}
+
+.save-payslip-btn{
+    width: 120px;
+    height: 30px;
+    margin-top: 35px;
+    background-color:rgb(60, 60, 60);
+    border-radius: 7px;
+    font-size: medium;
+    border: 2px solid bisque;
+}
+
+.save-payslip-btn:hover{
+    background-color: burlywood;
+    color: black;
+}
