@@ -15,7 +15,9 @@ export default function createContract(){
     
       const [contractData, setContractData] = useState({
         salary: '',
-        vacationDays: ''
+        vacationDays: '',
+        dateOfStart: '',
+        dateOfEnd: ''
       });
 
       const [bonuses, setBonuses] = useState([]);
@@ -29,15 +31,15 @@ export default function createContract(){
 
     return(
         <div className='contract-page'>
-          <Navbar/>
-          <div>
-            <UserInfo userData={userData} setUserData={setUserData}/>
-            <div>
+          <div className='contract-content'>
+            <div className='contract-info-wrapper'>
+              <UserInfo userData={userData} setUserData={setUserData}/>
               <ContractInfo contractData={contractData} setContractData={setContractData}/>
               <Bonuses bonuses={bonuses} setBonuses={setBonuses}/>
             </div>
-            <button onClick={handleSubmit}>Создать</button>
+            <button className='create-contract-button' onClick={handleSubmit}>Создать</button>
           </div>
+          <Navbar/>
       </div>
     )
 }

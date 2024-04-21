@@ -4,6 +4,8 @@
     background-color: burlywood;
     display: flex;
     flex-direction: row;
+    top: 0vh;
+    position: absolute;
 }
 
 .nav-button{

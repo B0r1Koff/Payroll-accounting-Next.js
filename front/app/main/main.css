@@ -1,7 +1,8 @@
 .mainpage{
     display: flex;
+    height: 80vh;
+    margin-top: 10vh;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -45,7 +46,7 @@
 .save-payslip-btn{
     width: 120px;
     height: 30px;
-    margin-top: 35px;
+    margin-top: 5%;
     background-color:rgb(60, 60, 60);
     border-radius: 7px;
     font-size: medium;

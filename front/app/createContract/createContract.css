@@ -1,8 +1,41 @@
 .contract-page{
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
+    margin-top: 10vh;
 }
 
-.contract{
-    
+.contract-content, .contract-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contract-info-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contract-data{
+    min-width: 300px;
+    width: 40vw;
+    height: 80vh;
+}
+
+.create-contract-button{
+    width: 120px;
+    height: 30px;
+    background-color:rgb(60, 60, 60);
+    border-radius: 7px;
+    font-size: medium;
+    border: 2px solid bisque;
+    font-size: medium;
+    border: 2px solid bisque;
+    margin: 20px;
+}
+
+.create-contract-button:hover{
+    background-color: burlywood;
+    color: black;
 }

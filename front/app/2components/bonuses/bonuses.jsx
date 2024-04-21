@@ -1,3 +1,5 @@
+import styles from "./bonuses.css"
+
 export default function Bonuses({bonuses, setBonuses}){
 
     const handleAddBonus = () => {
@@ -21,18 +23,24 @@ export default function Bonuses({bonuses, setBonuses}){
       }
 
     return(
-        <div>
-            <h3>Надбавки</h3>
-            <button onClick={handleAddBonus}>Добавить надбавку</button>
-            <ul>
+      <div className="bonuses-info-container">   
+        <div className="bonuses-info-box">
+          <h3 className="bonuses-info-h3"><span className="bonuses-info-span"></span>Надбавки</h3>
+          <button className="new-bonus-button" onClick={handleAddBonus}>Добавить</button>
               {bonuses.map((char, index) => (
-                <li key={index}>
-                <input type="text" className="contract-creation-input" placeholder={index} value={char.name} onChange={(e) => handleBonusChange(index, 'name', e.target.value)}/>
-                <input type="text" className="contract-creation-input" placeholder="Введите значение" value={char.value} onChange={(e) => handleBonusChange(index, 'value', e.target.value)}/>
-                <button onClick={e => {handleDeleteBonus(index)}}>Удалить</button>
-                </li>
+                <div className="bonuses-info-form" key={index}>
+                  <div className="bonuses-info-input_box">
+                    <input type="text" required className="bonuses-info-input" placeholder={index} value={char.name} onChange={(e) => handleBonusChange(index, 'name', e.target.value)} />
+                    <label className="bonuses-info-label">Надбавка:</label>
+                  </div>
+                  <div className="bonuses-info-input_box">
+                    <input type="number" required className="bonuses-info-input" placeholder="Введите значение" value={char.value} onChange={(e) => handleBonusChange(index, 'value', e.target.value)} />
+                    <label className="bonuses-info-label">Значение:</label>
+                  </div>
+                  <button className="delete-bonus-button" onClick={e => {handleDeleteBonus(index)}}>Удалить</button>
+                </div>
               ))}
-            </ul>
+        </div>
       </div>
     )
 }
