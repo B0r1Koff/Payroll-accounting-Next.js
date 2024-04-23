@@ -1,15 +1,23 @@
 'use client';
 import styles from "./auth.css";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import userStore from "../store/userStore";
+import PocketBase from 'pocketbase';
 
 export default function Auth(){
     const { role, set, reset } = userStore()
     const router = useRouter()
+    const pb = new PocketBase("http://127.0.0.1:8090")
 
     let [login, setLogin] = useState("")
     let [password, setPassword] = useState("")
+    let [list, setList] = useState([])
+
+    // useEffect(() => {
+    //     let list = pb.send("/api/collections/Worker/records")
+    //     list.then((data) => console.log(data))
+    // }, [])
 
     const handleAuthClick = () => {
         set("role2")

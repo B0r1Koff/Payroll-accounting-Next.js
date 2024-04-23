@@ -24,7 +24,6 @@ export default function createContract(){
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        // Do something with userData and contractData, like sending them to the server
         alert("Контракт создан")
         console.log('Submitted data:', { userData, contractData, bonuses });
       };
@@ -40,6 +39,6 @@ export default function createContract(){
             <button className='create-contract-button' onClick={handleSubmit}>Создать</button>
           </div>
           <Navbar/>
-      </div>
+        </div>
     )
 }
