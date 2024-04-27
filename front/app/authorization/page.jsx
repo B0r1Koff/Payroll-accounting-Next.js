@@ -25,22 +25,44 @@ export default function Auth(){
     }
 
     return (
-        <div className='auth'>
+        // <div className='auth'>
 
-            <header className='auth-head'>Авторизация</header>
+        //     <header className='auth-head'>Авторизация</header>
 
-            <div className='log-container'>
-                <label htmlFor="" className='log-label'>Логин:</label>
-                <input type="text" placeholder='Логин' required className='log-input' onChange={e => setLogin(e.target.value)}/>
-            </div>
+        //     <div className='log-container'>
+        //         <label htmlFor="" className='log-label'>Логин:</label>
+        //         <input type="text" placeholder='Логин' required className='log-input' onChange={e => setLogin(e.target.value)}/>
+        //     </div>
 
-            <div className='log-container'>
-                <label htmlFor="" className='log-label'>Пароль:</label>
-                <input type="password" placeholder='Пароль' className='log-input' required onChange={e => setPassword(e.target.value)}/>
-            </div>
+        //     <div className='log-container'>
+        //         <label htmlFor="" className='log-label'>Пароль:</label>
+        //         <input type="password" placeholder='Пароль' className='log-input' required onChange={e => setPassword(e.target.value)}/>
+        //     </div>
 
-            <button className='confirm-auth-button' onClick={handleAuthClick}>Подтвердить</button>
+        //     <button className='confirm-auth-button' onClick={handleAuthClick}>Подтвердить</button>
            
+        // </div>
+        <div className="container">
+            <div className="box">
+                <h3 className="h3"><span className="span"></span>Авторизация</h3>
+
+                <div className="form">
+
+                    <div className="input_box">
+                        <input type="text" required className="input" onChange={e => setLogin(e.target.value)}/>
+                        <label className="label">Логин</label>
+                    </div>
+                    <div className="input_box">
+                        <input type="password" required className="input" onChange={e => setPassword(e.target.value)}/>
+                        <label className="label">Пароль</label>
+                    </div>
+
+                    <button type="submit" className="login-button" onClick={handleAuthClick}>Авторизоваться</button>
+
+                </div>
+             
+            </div>
+
         </div>
     )
 }

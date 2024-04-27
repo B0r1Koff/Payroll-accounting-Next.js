@@ -14,7 +14,7 @@ export default function ContractsPage(){
     <div>
       <Navbar/>
       <div className='table-page'>
-        <h1>Employee Contracts</h1>
+        <h1>Контракты</h1>
         <table>
           <thead>
             <tr>

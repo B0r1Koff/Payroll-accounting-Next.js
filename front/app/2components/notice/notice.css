@@ -10,7 +10,7 @@
 .notice-info-container .notice-info-box{
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0px 9px 30px -15px rgb(0 0 0);
+    box-shadow: 0px 9px 30px -10px rgb(0 0 0);
 }
 .notice-info-box .notice-info-h3{
     text-align: center;
@@ -52,6 +52,7 @@
     padding: 0px 10px;
     pointer-events: none;
     transition: 0.3s;
+    background-color: white;
 }
 .notice-info-box .notice-info-form .notice-info-input_box .notice-info-input:focus + .notice-info-label,
 .notice-info-box .notice-info-form .notice-info-input_box .notice-info-input:valid + .notice-info-label{
@@ -77,7 +78,7 @@
     font-size: 22px;
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    color: #D48166;
 }
 .notice-info-box .notice-info-form,
 .notice-info-box .notice-info-form,

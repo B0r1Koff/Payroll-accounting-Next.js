@@ -8,7 +8,7 @@ import { useState } from 'react';
 export default function Main() {
 
     const monthes = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",]
-    const dates = [4,5,6,7]
+    const dates = [4,5,6,7,8,9]
 
     let [date, setDate] = useState(monthes[dates.reverse()[0]])
 
@@ -33,13 +33,11 @@ export default function Main() {
             <div className="payslip">
 
                 <div className='month-options'>
-                    <h2>Месяц:</h2>
                     <select className="select-month" value={date} onChange = {(event) => setDate(event.target.value)}>
 			            {dateOptions}
 		            </select>
+                    <label className='select-month-label'>Месяц:</label>
                 </div>
-
-                <div className='report-wrapper'>
 
                     <div id="report">
                         <h1 className="payslip-h">Расчетный лист</h1>
@@ -52,8 +50,6 @@ export default function Main() {
                         <p className='payslip-field'>Размер выплаты:</p>
                         <p className='payslip-field'>Размер удержаний: </p>
                     </div>
-
-                </div>
 
             </div>
 

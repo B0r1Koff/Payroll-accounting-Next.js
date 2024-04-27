@@ -19,7 +19,7 @@
 .bonuses-info-container .bonuses-info-box{
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0px 9px 30px -15px rgb(0 0 0);
+    box-shadow: 0px 9px 30px -10px rgb(0 0 0);
 }
 .bonuses-info-box .bonuses-info-h3{
     text-align: center;
@@ -60,6 +60,7 @@
     padding: 0px 10px;
     pointer-events: none;
     transition: 0.3s;
+    background-color: white;
 }
 .bonuses-info-box .bonuses-info-form .bonuses-info-input_box .bonuses-info-input:focus + .bonuses-info-label,
 .bonuses-info-box .bonuses-info-form .bonuses-info-input_box .bonuses-info-input:valid + .bonuses-info-label{
@@ -85,7 +86,7 @@
     font-size: 22px;
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    color: #D48166;
 }
 .bonuses-info-box .bonuses-info-form,
 .bonuses-info-box .bonuses-info-form,
