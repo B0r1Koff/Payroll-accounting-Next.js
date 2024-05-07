@@ -16,11 +16,11 @@ export default function UserInfo({userData, setUserData}){
           <h3 className="worker-info-h3"><span className="worker-info-span"></span>Работник</h3>
           <div className="worker-info-form">
             <div className="worker-info-input_box">
-              <input type="text" required className="worker-info-input" name="fullName" placeholder="Full Name" value={userData.fullName} onChange={handleUserDataChange}/>
+              <input type="text" required className="worker-info-input" name="fio" placeholder="Full Name" value={userData.fio} onChange={handleUserDataChange}/>
               <label className="worker-info-label">ФИО:</label>
             </div>
             <div className="worker-info-input_box">
-              <input type="text" required className="worker-info-input" name="username" placeholder="Username" value={userData.username} onChange={handleUserDataChange}/>
+              <input type="text" required className="worker-info-input" name="login" placeholder="Username" value={userData.login} onChange={handleUserDataChange}/>
               <label className="worker-info-label">Логин:</label>
             </div>
             <div className="worker-info-input_box">

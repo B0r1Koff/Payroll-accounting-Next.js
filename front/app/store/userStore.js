@@ -1,9 +1,9 @@
 import { create } from "zustand"
 
 const userStore = create((set) => ({
- role: "",
- set: (role) => set(() => ({ role: role })),
- reset: () => set({ count: 0 })
+ user: null,
+ setUser: () => set(() => ({ user: JSON.parse(localStorage.getItem('loggedUser')) })),
+ resetUser: () => set({ user: null })
 }))
 
 export default userStore

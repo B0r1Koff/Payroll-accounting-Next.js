@@ -3,8 +3,10 @@ import { useState } from "react"
 import styles from "./absenceNotice.css"
 import Navbar from "../2components/navbar/navbar"
 import Notice from "../2components/notice/notice"
+import { usePathname } from "next/navigation"
 
 export default function AbsenceNotice(){
+    const path = usePathname()
     const typesOfAbsence = ["Отпуск", "Больничный", "Оплачиваемый отпуск", "Прогул"]
 
     const [noticeData, setNoticeData] = useState({

@@ -4,44 +4,91 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import userStore from "../store/userStore";
 import PocketBase from 'pocketbase';
+import axios from "axios";
 
 export default function Auth(){
-    const { role, set, reset } = userStore()
     const router = useRouter()
     const pb = new PocketBase("http://127.0.0.1:8090")
 
     let [login, setLogin] = useState("")
     let [password, setPassword] = useState("")
-    let [list, setList] = useState([])
+    const { user, setUser, resetUser } = userStore()
 
-    // useEffect(() => {
-    //     let list = pb.send("/api/collections/Worker/records")
-    //     list.then((data) => console.log(data))
-    // }, [])
+    const Create = () => {
+    //   const data = {
+    //     "fio": "test",
+    //     "login": "testtest",
+    //     "password": "test",
+    //     "department_id": "r5noqtwem67jh9o",
+    //     "position": "worker"
+    // };
+    
+    // const record =  pb.collection('Worker').create(data);
+    // console.log(record);
+
+    let final
+
+      let data = fetch("http://127.0.0.1:8090/api/collections/Worker/records",{ method:"POST", body: {
+            "fio": "test",
+            "login": "testtest",
+            "password": "test",
+            "department_id": "r5noqtwem67jh9o",
+            "position": "worker"}}).then((val) => console.log(val))
+            return final
+    
+    }
+
+    useEffect(() => {
+
+        // async function getData() {
+        //   let final;
+
+        //   let data = await fetch("http://127.0.0.1:8090/api/collections/Worker/records",{ method:"POST", body: {
+        //     "fio": "test",
+        //     "login": "testtest",
+        //     "password": "test",
+        //     "department_id": "r5noqtwem67jh9o",
+        //     "position": "worker"}}).then((val) => final = val)
+        //     return final
+        // }
+
+        // const finalData = getData()
+        // console.log(finalData);
+
+        // pb.send("/api/collections/Worker/records", body = {
+        //   "fio": "test",
+        //   "login": "testtest",
+        //   "password": "test",
+        //   "department_id": "r5noqtwem67jh9o",
+        //   "position": "worker"})
+
+        //list.then((data) => console.log(data))
+    }, [])
 
     const handleAuthClick = () => {
-        set("role2")
-        router.push("/main")
+        fetch(`http://127.0.0.1:8090/api/collections/Worker/login/${login}/${password}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log('User:', data.user);
+            localStorage.setItem('loggedUser', JSON.stringify(data.user))
+            router.push("/main")
+          })
+          .catch(error => {
+            console.error('There was a problem with your fetch operation:', error);
+          });
     }
 
     return (
-        // <div className='auth'>
-
-        //     <header className='auth-head'>Авторизация</header>
-
-        //     <div className='log-container'>
-        //         <label htmlFor="" className='log-label'>Логин:</label>
-        //         <input type="text" placeholder='Логин' required className='log-input' onChange={e => setLogin(e.target.value)}/>
-        //     </div>
-
-        //     <div className='log-container'>
-        //         <label htmlFor="" className='log-label'>Пароль:</label>
-        //         <input type="password" placeholder='Пароль' className='log-input' required onChange={e => setPassword(e.target.value)}/>
-        //     </div>
-
-        //     <button className='confirm-auth-button' onClick={handleAuthClick}>Подтвердить</button>
-           
-        // </div>
         <div className="container">
             <div className="box">
                 <h3 className="h3"><span className="span"></span>Авторизация</h3>

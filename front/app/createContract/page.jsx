@@ -1,16 +1,22 @@
 'use client'
 import styles from './createContract.css'; 
 import Navbar from '../2components/navbar/navbar'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserInfo from '../2components/userInfo/userInfo';
 import ContractInfo from '../2components/contractInfo/contractInfo';
 import Bonuses from '../2components/bonuses/bonuses';
+import PocketBase from 'pocketbase';
 
 export default function createContract(){
+    const pb = new PocketBase("http://127.0.0.1:8090")
+    const [check, setCheck] = useState()
+
     const [userData, setUserData] = useState({
-        fullName: '',
-        username: '',
-        password: ''
+        fio: '',
+        login: '',
+        password: '',
+        department_id: 'ow9ugkkk6wzjbzz',
+        position: 'worker'
       });
     
       const [contractData, setContractData] = useState({
@@ -21,11 +27,38 @@ export default function createContract(){
       });
 
       const [bonuses, setBonuses] = useState([]);
+
+      const findUserByLogin = () => {
+        setCheck(fetch(`http://127.0.0.1:8090/api/collections/Worker/login/${userData.login}/${userData.password}`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          
+          .catch(error => {
+            console.error('There was a problem with your fetch operation:', error);
+          }))
+
+          return check;
+    }
     
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        alert("Контракт создан")
-        console.log('Submitted data:', { userData, contractData, bonuses });
+      const handleSubmit = () => {
+        if (findUserByLogin()) {
+          alert("Сотрудник с таким логином уже существует!")
+          return
+        }
+
+        // const record = pb.collection('Worker').create(userData);
+        // record.then(function({collectionId}){
+        //   console.log(collectionId);
+        // })
       };
 
     return(

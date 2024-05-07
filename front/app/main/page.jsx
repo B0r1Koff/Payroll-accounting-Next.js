@@ -29,7 +29,7 @@ export default function Main() {
 
     return (
         <div className='mainpage'>
-            <Navbar/>
+    
             <div className="payslip">
 
                 <div className='month-options'>
@@ -54,7 +54,7 @@ export default function Main() {
             </div>
 
             <button className="save-payslip-btn" onClick={(e)=>{generatePDF()}}>Сохранить</button>
-
+            <Navbar/>
         </div>
     )
 }
