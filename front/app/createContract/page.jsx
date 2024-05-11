@@ -21,9 +21,10 @@ export default function createContract(){
     
       const [contractData, setContractData] = useState({
         salary: '',
-        vacationDays: '',
-        dateOfStart: '',
-        dateOfEnd: ''
+        sick_days: '',
+        date_of_start: '',
+        date_of_end: '',
+        worker_id: ''
       });
 
       const [bonuses, setBonuses] = useState([]);
@@ -54,11 +55,16 @@ export default function createContract(){
           alert("Сотрудник с таким логином уже существует!")
           return
         }
-
-        // const record = pb.collection('Worker').create(userData);
-        // record.then(function({collectionId}){
-        //   console.log(collectionId);
-        // })
+        const worker = pb.collection('Worker').create(userData);
+        worker.then(function({collectionId}){
+          const contract = pb.collection('Contract').create({
+            "salary": contractData.salary,
+            "sick_days": contractData.sick_days,
+            "worker_id": collectionId,
+            "date_of_start": contractData.date_of_start,
+            "date_of_end": contractData.date_of_end
+        });
+        })
       };
 
     return(

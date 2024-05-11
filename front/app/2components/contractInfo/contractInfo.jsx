@@ -22,15 +22,15 @@ export default function ContractInfo({contractData, setContractData}){
               <label className="contract-info-label">Оклад:</label>
             </div>
             <div className="contract-info-input_box">
-              <input type="number" required className="contract-info-input" name="vacationDays" placeholder="Vacation Days" value={contractData.vacationDays} onChange={handleContractDataChange}/>
+              <input type="number" required className="contract-info-input" name="sick_days" placeholder="Vacation Days" value={contractData.sick_days} onChange={handleContractDataChange}/>
               <label className="contract-info-label">Число дней отпуска в год:</label>
             </div>
             <div className="contract-info-input_box">
-              <input type="date" required className="contract-info-input" name="dateOfStart" placeholder="Date of start" value={contractData.dateOfStart} onChange={handleContractDataChange}/>
+              <input type="date" required className="contract-info-input" name="date_of_start" placeholder="Date of start" value={contractData.date_of_start} onChange={handleContractDataChange}/>
               <label className="contract-info-label">Дата начала:</label>
             </div>
             <div className="contract-info-input_box">
-              <input type="date" required className="contract-info-input" name="dateOfEnd" placeholder="Date of end" value={contractData.dateOfEnd} onChange={handleContractDataChange}/>
+              <input type="date" required className="contract-info-input" name="date_of_end" placeholder="Date of end" value={contractData.date_of_end} onChange={handleContractDataChange}/>
               <label className="contract-info-label">Дата завершения:</label>
             </div>
           </div>
