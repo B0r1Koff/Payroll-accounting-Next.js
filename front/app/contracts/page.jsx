@@ -1,5 +1,4 @@
 "use client"
-
 import styles from "./contracts.css";
 import React from 'react';
 import Navbar from '../2components/navbar/navbar';

@@ -19,7 +19,6 @@ export default function Main() {
         const pdf = new jsPDF();
         pdf.addImage(imgData, 'JPEG', 0, 0);
         pdf.save("Расчетный лист");
-
       });
     }
 

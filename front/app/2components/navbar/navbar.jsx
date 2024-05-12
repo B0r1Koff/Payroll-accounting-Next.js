@@ -22,7 +22,6 @@ export default function Navbar(){
         //     router.push("/")
         // }
         setUser()
-        console.log(user);
     }, [])
 
     const toggleProfile = () => {
