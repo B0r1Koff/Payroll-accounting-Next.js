@@ -10,7 +10,17 @@ import axios from 'axios';
 
 export default function createContract(){
     const pb = new PocketBase("http://127.0.0.1:8090")
-    const [check, setCheck] = useState()
+    const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8090/api/collections/Worker/records')
+      .then(response => {
+        setUsers(response.data.items);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [])
 
     const [userData, setUserData] = useState({
         fio: '',
@@ -34,35 +44,30 @@ export default function createContract(){
         worker_id: ''
       });
 
-      // const [bonuses, setBonuses] = useState([]);
-
       const findUserByLogin = () => {
-        fetch(`http://127.0.0.1:8090/api/collections/Worker/login/${userData.login}/${userData.password}`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json();
-          })
-          .then(data => {
-            return data
-          })
-          .catch(error => {
-            console.error('There was a problem with your fetch operation:', error);
-          })
+        let check = false
+        users.map(user => {
+          if (user.login === userData.login) {
+            check = true
+          }
+        })
+
+        return check
     }
     
       const handleSubmit = () => {
-        // if (findUserByLogin()) {
-        //   alert("Сотрудник с таким логином уже существует!")
-        //   return
-        // }
-        console.log(findUserByLogin());
+        if(userData.fio === "" || userData.login === "" || userData.password === "" || contractData.date_of_end === "" || contractData.date_of_start === "" || contractData.salary === "" || contractData.sick_days === ""){
+          alert("Заполните все поля!")
+          return
+        }
+        if(userData.login.length < 8){
+          alert("Длина логина должна быть 8 и более символов!")
+          return
+        }
+        if(findUserByLogin()){
+          alert("Логин сотрудника не уникальный!")
+          return
+        }
         if(Math.abs(bonuses.experience ) > 15 || Math.abs(bonuses.overworking) > 15){
           alert("Размер надбавок не должен превышать 15 процентов!")
           return
