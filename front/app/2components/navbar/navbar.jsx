@@ -9,19 +9,17 @@ import { usePathname } from 'next/navigation';
 
 export default function Navbar(){
     const pathes = {"worker" : ["/main"], "head" : ["/main", "/createContract", "/absenceNotice", "/contracts"]}
-    const { user, setUser, resetUser } = userStore()
     const path = usePathname()
+    const [loggedUser, setLoggedUser] = useState(JSON.parse(localStorage.getItem('loggedUser')))
     const router = useRouter()
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isProfileClicked, setIsProfileClicked] = useState(false);
-    let role = "head"
 
     useEffect(() => {
-        // const pathesList = pathes["worker"]
-        // if(!pathesList.includes(path)){
-        //     router.push("/")
-        // }
-        setUser()
+        const pathesList = pathes[loggedUser.position]
+        if(!pathesList.includes(path)){
+            router.push("/")
+        }
     }, [])
 
     const toggleProfile = () => {
@@ -30,7 +28,7 @@ export default function Navbar(){
     };
 
     return ( 
-        role === "director" ?
+        loggedUser.position === "director" ?
 
         <div className="navbar">
             <div className='nav-start'>
@@ -43,7 +41,7 @@ export default function Navbar(){
             </div>
         </div>
 
-        : role === "head" ? 
+        : loggedUser.position === "head" ? 
 
         <div className="navbar">
             <div className='nav-start'>

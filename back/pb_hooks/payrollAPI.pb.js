@@ -148,7 +148,7 @@ onAfterBootstrap((c) => {
         });
       }
 
-      if(new Date(monthes.reverse()[0].date.substring(0,10)).getMonth() < new Date().getMonth()){
+      if(new Date(monthes.reverse()[0].date.substring(0,10)).getMonth() < new Date().getMonth()-1){
         calculateSalary(contracts, notices, allowances)
       }
       

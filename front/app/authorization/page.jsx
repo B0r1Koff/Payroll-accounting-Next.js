@@ -79,7 +79,7 @@ export default function Auth(){
             return response.json();
           })
           .then(data => {
-            console.log('User:', data.user);
+            setUser(data.user)
             localStorage.setItem('loggedUser', JSON.stringify(data.user))
             router.push("/main")
           })

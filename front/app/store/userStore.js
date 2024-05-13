@@ -2,7 +2,7 @@ import { create } from "zustand"
 
 const userStore = create((set) => ({
  user: null,
- setUser: () => set(() => ({ user: JSON.parse(localStorage.getItem('loggedUser')) })),
+ setUser: (user) => set(() => ({ user: user })),
  resetUser: () => set({ user: null })
 }))
 

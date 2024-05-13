@@ -3,14 +3,28 @@ import Navbar from '../2components/navbar/navbar'
 import styles from "./main.css";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import userStore from '../store/userStore';
+import axios from 'axios';
 
 export default function Main() {
-
+    const [user, setLoggedUser] = useState(JSON.parse(localStorage.getItem('loggedUser')))
     const monthes = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",]
     const dates = [4,5,6,7,8,9]
 
     let [date, setDate] = useState(monthes[dates.reverse()[0]])
+    const [data, setData] = useState([])
+
+  useEffect(() => {
+    axios.get(`http://127.0.0.1:8090/api/collections/MonthData/records?filter=(worker_id='${user.id}')`)
+      .then(response => {
+        console.log(response.data.items);
+        setData(response.data.items);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [])
 
     const generatePDF = () => {
         const input = document.getElementById('report');

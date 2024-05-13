@@ -69,7 +69,7 @@ export default function createContract(){
           return
         }
         if(Math.abs(bonuses.experience ) > 15 || Math.abs(bonuses.overworking) > 15){
-          alert("Размер надбавок не должен превышать 15 процентов!")
+          alert("Размер надбавки не должен превышать 15 процентов!")
           return
         }
         const worker = pb.collection('Worker').create(userData);
