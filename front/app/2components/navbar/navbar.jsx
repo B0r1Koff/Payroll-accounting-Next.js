@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar(){
-    const pathes = {"worker" : ["/main"], "head" : ["/main", "/createContract", "/absenceNotice", "/contracts"]}
+    const pathes = {"worker" : ["/main"], "head" : ["/main", "/createContract", "/absenceNotice", "/contracts", "/chartsPage"], "director" : ["/contracts", "/createContract"]}
     const path = usePathname()
     const [loggedUser, setLoggedUser] = useState(JSON.parse(localStorage.getItem('loggedUser')))
     const router = useRouter()
@@ -34,6 +34,9 @@ export default function Navbar(){
             <div className='nav-start'>
                 <button onClick={toggleProfile} disabled={isProfileClicked} className='nav-button'><img className='nav-btn-img' src="https://cdn.onlinewebfonts.com/svg/img_217837.png" alt="fewre" /></button>
                 <Profile isOpen={isProfileOpen} onClose={toggleProfile}/>
+
+                <button className='nav-button' onClick={e => router.push("/contracts")}><img className='nav-btn-img' src="https://cdn.onlinewebfonts.com/svg/img_50288.png" alt="" /></button>
+                <button className='nav-button' onClick={e => router.push("/createContract")}><img className='nav-btn-img' src="https://cdn.icon-icons.com/icons2/2946/PNG/512/paper_plus_icon_184281.png" alt="" /></button>
             </div>
                 
             <div className='nav-end'>

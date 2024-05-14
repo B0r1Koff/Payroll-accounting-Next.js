@@ -81,7 +81,12 @@ export default function Auth(){
           .then(data => {
             setUser(data.user)
             localStorage.setItem('loggedUser', JSON.stringify(data.user))
-            router.push("/main")
+            if(data.user.position === "director"){
+              router.push("/contracts")
+            }else{
+              router.push("/main")
+            }
+            
           })
           .catch(error => {
             console.error('There was a problem with your fetch operation:', error);

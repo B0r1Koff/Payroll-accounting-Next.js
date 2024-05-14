@@ -4,8 +4,9 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     text-align: center;
+    overflow: scroll;
 }
 
 th{
@@ -14,4 +15,15 @@ th{
 
 td{
     border: 1px solid black;
+}
+
+table{
+    width: 100%;
+    margin-top: 40px;
+}
+
+.contracts-h{
+    position: fixed;
+    width: 100%;
+    text-align: center;
 }
