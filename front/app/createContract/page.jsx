@@ -7,6 +7,7 @@ import ContractInfo from '../2components/contractInfo/contractInfo';
 import Bonuses from '../2components/bonuses/bonuses';
 import PocketBase from 'pocketbase';
 import axios from 'axios';
+import { findUserByLogin } from '../functions/functions';
 
 export default function createContract(){
     const [user, setLoggedUser] = useState(JSON.parse(localStorage.getItem('loggedUser')))
@@ -47,26 +48,6 @@ export default function createContract(){
         worker_id: ''
       });
 
-      const findUserByLogin = () => {
-        let check = false
-        users.map(user => {
-          if (user.login === userData.login) {
-            check = true
-          }
-        })
-
-        return check
-    }
-
-    const handleCreateDepartment = async() => {
-      const data = {
-        "name": newDepartment
-      };
-    
-      const record = await pb.collection('Department').create(data);
-      setNewDepartmentID(record.id);
-    }
-
       const handleSubmit = () => {
         if(user.position === "director" && newDepartment !== ""){
         
@@ -82,7 +63,7 @@ export default function createContract(){
           alert("Длина логина должна быть 8 и более символов!")
           return
         }
-        if(findUserByLogin()){
+        if(findUserByLogin(users, userData.login)){
           alert("Логин сотрудника не уникальный!")
           return
         }
@@ -119,6 +100,8 @@ export default function createContract(){
           }, 300);
         })
           })
+
+          alert("Отдел создан!")
         }
         else{
         
@@ -130,7 +113,7 @@ export default function createContract(){
           alert("Длина логина должна быть 8 и более символов!")
           return
         }
-        if(findUserByLogin()){
+        if(findUserByLogin(users, userData.login)){
           alert("Логин сотрудника не уникальный!")
           return
         }
@@ -161,6 +144,8 @@ export default function createContract(){
           }, 300);
         })
         }
+
+        alert("Сотрудник зарегистрирован!")
       };
 
     return(

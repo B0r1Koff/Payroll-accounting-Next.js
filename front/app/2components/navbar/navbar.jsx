@@ -55,7 +55,7 @@ export default function Navbar(){
                 <button className='nav-button' onClick={e => router.push("/createContract")}><img className='nav-btn-img' src="https://cdn.icon-icons.com/icons2/2946/PNG/512/paper_plus_icon_184281.png" alt="" /></button>
                 <button className='nav-button' onClick={e => router.push("/absenceNotice")}><img className='nav-btn-img' src="https://premiumwebsites.net/wp-content/uploads/2017/10/google-calendar.png" alt="" /></button>
                 <button className='nav-button' onClick={e => router.push("/contracts")}><img className='nav-btn-img' src="https://cdn.onlinewebfonts.com/svg/img_50288.png" alt="" /></button>
-                <button className='nav-button' onClick={e => router.push("/chartsPage")}><img className='nav-btn-img' src="https://collegial.sainteanne.ca/wp-content/uploads/2022/01/noun-analytics-4111649-copy-2048x1993.png" alt="" /></button>
+                {/* <button className='nav-button' onClick={e => router.push("/chartsPage")}><img className='nav-btn-img' src="https://collegial.sainteanne.ca/wp-content/uploads/2022/01/noun-analytics-4111649-copy-2048x1993.png" alt="" /></button> */}
             </div>
                 
             <div className='nav-end'>

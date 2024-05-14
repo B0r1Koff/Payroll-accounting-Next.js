@@ -80,6 +80,7 @@ export default function Auth(){
           })
           .then(data => {
             setUser(data.user)
+            console.log(data.user);
             localStorage.setItem('loggedUser', JSON.stringify(data.user))
             if(data.user.position === "director"){
               router.push("/contracts")

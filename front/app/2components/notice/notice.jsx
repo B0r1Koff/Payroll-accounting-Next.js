@@ -3,13 +3,12 @@ import styles from "./notice.css"
 import axios from "axios";
 
 export default function Notice({noticeData, setNoticeData}){
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('loggedUser')))
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8090/api/collections/Worker/records')
+    axios.get(`http://127.0.0.1:8090/api/collections/Worker/records?filter=(department_id='${user.department_id}')`)
       .then(response => {
-        console.log(response.data.items);
         setUsers(response.data.items);
       })
       .catch(error => {

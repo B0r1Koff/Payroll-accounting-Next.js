@@ -3,6 +3,7 @@ import styles from "./contracts.css";
 import React, { useState, useEffect } from 'react';
 import Navbar from '../2components/navbar/navbar';
 import axios from "axios";
+import { getPosition, getDepartment, getOverworkingAllowance, getExperienceAllowance, getSalary} from "../functions/functions";
 
 export default function ContractsPage(){
   const [user, setLoggedUser] = useState(JSON.parse(localStorage.getItem('loggedUser')))
@@ -58,54 +59,6 @@ export default function ContractsPage(){
       }, 600);
   }, [])
 
-  const getExperienceAllowance = (id) => {
-    let result = 0
-    allowances.map(allowance => {
-      if(allowance.worker_id === id && allowance.type === "experience"){
-        result = allowance.percent
-      }
-    })
-
-    return result
-  }
-
-  const getOverworkingAllowance = (id) => {
-    let result = 0
-    allowances.map(allowance => {
-      if(allowance.worker_id === id && allowance.type === "overworking"){
-        result = allowance.percent
-      }
-    })
-
-    return result
-  }
-
-  const getPosition = (id) => {
-    if(id === "worker"){
-      return "Сотрудник"
-    }else return "Руководитель отделения"
-  }
-
-  const getDepartment = (id) => {
-    let result = ""
-    departments.map(department => {
-      if(department.id === id){
-        result = department.name
-      }
-    })
-    return result
-  }
-
-  const getSalary = (id) => {
-    let result = 0
-    contracts.map(contract => {
-      if(contract.worker_id === id){
-        result = contract.salary
-      }
-    })
-    return result
-  }
-
   return (
     <div>
       <div className='table-page'>
@@ -126,10 +79,10 @@ export default function ContractsPage(){
               <tr key={item.id}>
                 <td>{item.fio}</td>
                 <td>{getPosition(item.position)}</td>
-                <td>{getDepartment(item.department_id)}</td>
-                <td>{getSalary(item.id)}</td>
-                <td>{getExperienceAllowance(item.id)}</td>
-                <td>{getOverworkingAllowance(item.id)}</td>
+                <td>{getDepartment(departments, item.department_id)}</td>
+                <td>{getSalary(contracts, item.id)}</td>
+                <td>{getExperienceAllowance(allowances, item.id)}</td>
+                <td>{getOverworkingAllowance(allowances, item.id)}</td>
               </tr>
             ))}
           </tbody>

@@ -22,8 +22,12 @@ export default function AbsenceNotice(){
         alert("Заполните все поля!")
         return
       }
-      alert("Уведомление создано")
       const record = pb.collection('Notices').create(noticeData);
+      record.then(response => {
+        if(response.created){
+          alert("Уведомление создано")
+        }
+      })
     };
 
     return(
