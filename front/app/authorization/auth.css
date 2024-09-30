@@ -171,3 +171,11 @@
 .box .form .contact_link .a:hover{
     text-decoration: underline;
 }
+
+.p{
+    margin-bottom: 10px;
+}
+
+.signup_link{
+    color: blue;
+}

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import userStore from "../store/userStore";
 import PocketBase from 'pocketbase';
 import axios from "axios";
+import Link from 'next/link'
 
 export default function Auth(){
     const router = useRouter()
@@ -13,57 +14,6 @@ export default function Auth(){
     let [login, setLogin] = useState("")
     let [password, setPassword] = useState("")
     const { user, setUser, resetUser } = userStore()
-
-    const Create = () => {
-    //   const data = {
-    //     "fio": "test",
-    //     "login": "testtest",
-    //     "password": "test",
-    //     "department_id": "r5noqtwem67jh9o",
-    //     "position": "worker"
-    // };
-    
-    // const record =  pb.collection('Worker').create(data);
-    // console.log(record);
-
-    let final
-
-      let data = fetch("http://127.0.0.1:8090/api/collections/Worker/records",{ method:"POST", body: {
-            "fio": "test",
-            "login": "testtest",
-            "password": "test",
-            "department_id": "r5noqtwem67jh9o",
-            "position": "worker"}}).then((val) => console.log(val))
-            return final
-    
-    }
-
-    useEffect(() => {
-
-        // async function getData() {
-        //   let final;
-
-        //   let data = await fetch("http://127.0.0.1:8090/api/collections/Worker/records",{ method:"POST", body: {
-        //     "fio": "test",
-        //     "login": "testtest",
-        //     "password": "test",
-        //     "department_id": "r5noqtwem67jh9o",
-        //     "position": "worker"}}).then((val) => final = val)
-        //     return final
-        // }
-
-        // const finalData = getData()
-        // console.log(finalData);
-
-        // pb.send("/api/collections/Worker/records", body = {
-        //   "fio": "test",
-        //   "login": "testtest",
-        //   "password": "test",
-        //   "department_id": "r5noqtwem67jh9o",
-        //   "position": "worker"})
-
-        //list.then((data) => console.log(data))
-    }, [])
 
     const handleAuthClick = () => {
         fetch(`http://127.0.0.1:8090/api/collections/Worker/login/${login}/${password}`, {

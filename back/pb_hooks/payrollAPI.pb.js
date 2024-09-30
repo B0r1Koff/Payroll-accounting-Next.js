@@ -115,9 +115,9 @@ onAfterBootstrap((c) => {
       
             totalWorkDays -= totalAbsentDays; 
       
-          if (totalWorkDays >= 22) {
-            totalWorkDays = 22; 
-          }
+          // if (totalWorkDays >= 22) {
+          //   totalWorkDays = 22; 
+          // }
       
           const employeeAllowances = allowances.filter(
             (allowance) => allowance.worker_id === employeeId
@@ -148,7 +148,7 @@ onAfterBootstrap((c) => {
         });
       }
 
-      if(new Date(monthes.reverse()[0].date.substring(0,10)).getMonth() < new Date().getMonth()-1){
+      if(new Date(monthes.reverse()[0].date.substring(0,10)).getMonth() < new Date().getMonth()){
         calculateSalary(contracts, notices, allowances)
       }
       

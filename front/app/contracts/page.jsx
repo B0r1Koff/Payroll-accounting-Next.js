@@ -18,7 +18,7 @@ export default function ContractsPage(){
       .then(response => {
         setUsers(response.data.items);
       })
-      .catch(error => {
+      .catch(error => {   
         console.error(error);
       });
     } else{
